@@ -1,0 +1,25 @@
+<div>
+    <br />
+    <div class="editor-content">
+        {{{enrichedText}}}
+    </div>
+    <section class="gatherer-container journal-entry-pages">
+        <header>
+            {{#if hasDraws}}<span {{#unless pullsRemaining}}style="color: red"{{/unless}}><strong>{{localize "gatherer.sheet.remaining"}}:</strong> {{pullsRemaining}}</span>{{/if}}
+            <span><strong>{{localize "gatherer.sheet.quantity"}}:</strong> {{quantity}}</span>
+            {{#if hasTime}}<span><strong>{{localize "gatherer.sheet.time"}}:</strong> {{resetTime}}</span>{{/if}}
+        </header>
+        <ul>
+            {{#each weightedResults}}
+                <li class="gatherer-item" data-uuid="{{item.documentUuid}}" data-tooltip="{{displayName}} {{quantityDisplay}}" style="background-image: url('{{displayImg}}'); width: {{../size}}px; height: {{../size}}px"><span class="gatherer-min-roll">{{minRoll}}</span></li>
+            {{/each}}
+        </ul>
+        <footer class="gatherer-buttons action-buttons flexrow">
+            {{#if isGM}}
+            <button type="button" id="gatherer-reset"><i class="fas fa-undo"></i> {{localize "gatherer.sheet.reset"}}</button>
+            <button type="button" id="gatherer-edit"><i class="fas fa-pen-to-square"></i> {{localize "gatherer.sheet.edit"}}</button>
+            {{/if}}
+            <button type="button" id="gatherer-gather"><i class="fas fa-leaf"></i> {{localize "gatherer.sheet.gather"}}</button>
+        </footer>
+    </section>
+</div>

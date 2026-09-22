@@ -1,0 +1,95 @@
+<div class="gatherer-config-container">
+    <fieldset>
+        <div class="form-group">
+            <label for="flags.gatherer.table">{{localize "gatherer.flags.table.label"}}</label>
+            <div class="form-fields">
+                <select name="flags.gatherer.table">
+                    {{selectOptions tables selected=table}}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.time">{{localize "gatherer.flags.time.label"}}</label>
+            <div class="form-fields">
+                <input type="number" placeholder="{{localize "gatherer.flags.time.placeholder"}}" value="{{time}}"
+                    step="0.01" name="flags.gatherer.time">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.draws">{{localize "gatherer.flags.draws.label"}}</label>
+            <div class="form-fields">
+                <input type="number" placeholder="{{localize "gatherer.flags.draws.placeholder"}}" value="{{draws}}"
+                    step="1" name="flags.gatherer.draws">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.quantity">{{localize "gatherer.flags.quantity.label"}}</label>
+            <div class="form-fields">
+                <input type="text" placeholder="{{localize "gatherer.flags.quantity.placeholder"}}" value="{{quantity}}"
+                    name="flags.gatherer.quantity">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.require">{{localize "gatherer.flags.require.label"}}</label>
+            <div class="form-fields">
+                <input type="text" placeholder="{{localize "gatherer.flags.require.placeholder"}}" value="{{require}}"
+                    name="flags.gatherer.require">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.minigame">{{localize "gatherer.flags.minigame.label"}}</label>
+            <div class="form-fields">
+                <input type="number" placeholder="{{localize "gatherer.flags.minigame.placeholder"}}" value="{{minigame}}"
+                    step="1" name="flags.gatherer.minigame">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.expression">{{localize "gatherer.flags.expression.label"}}</label>
+            <div class="form-fields">
+                <input type="text" placeholder="{{localize "gatherer.flags.expression.placeholder"}}"
+                    value="{{expression}}" name="flags.gatherer.expression">
+            </div>
+        </div>
+        {{#if systemData}}
+        <div class="form-group">
+            <label for="flags.gatherer.systemAbil">{{localize "gatherer.flags.systemAbil.label"}}</label>
+            <div class="form-fields">
+                <select name="flags.gatherer.systemAbil">
+                    {{selectOptions systemSelect selected=systemAbil}}
+                </select>
+                <label for="flags.gatherer.DC">{{localize "gatherer.flags.DC.label"}}</label>
+                <input type="number" placeholder="{{localize "gatherer.flags.DC.placeholder"}}" value="{{DC}}"
+                    step="1" name="flags.gatherer.DC">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="flags.gatherer.toolCheck">{{localize "gatherer.flags.toolCheck.label"}}</label>
+            <div class="form-fields">
+                <select name="flags.gatherer.toolCheck">
+                    {{selectOptions tools selected=toolCheck localize=true}}
+                </select>
+                <label for="flags.gatherer.toolDC">{{localize "gatherer.flags.toolDC.label"}}</label>
+                <input type="number" placeholder="{{localize "gatherer.flags.toolDC.placeholder"}}" value="{{toolDC}}"
+                    step="1" name="flags.gatherer.toolDC">
+            </div>
+        </div>
+        {{/if}}
+    </fieldset>
+    <fieldset>
+        <legend class="flexrow"><button type="button" class="add-entry"><i class="fas fa-plus"></i> {{localize "gatherer.flags.modifierList.add"}}</button></legend>
+        <p class="hint">{{localize "gatherer.flags.modifierList.hint"}}</p>
+        {{#each modifierList}}
+            <div class="form-group">
+                <label>{{localize "gatherer.flags.modifierList.label"}}</label>
+                <div class="form-fields" data-index="{{@index}}">
+                    <input type="text" name="flags.gatherer.modifierList.{{@index}}.modifier" value="{{this.modifier}}" />
+                    <label>{{localize "gatherer.flags.toolDC.label"}}</label>
+                    <input type="number" placeholder="{{localize "gatherer.flags.toolDC.placeholder"}}" value="{{this.DC}}"
+                        step="1" name="flags.gatherer.modifierList.{{@index}}.DC">
+
+                    <button type="button" class="remove-entry icon fas fa-trash" data-index="{{@index}}"></button>
+                </div>
+            </div>
+        {{/each}}
+    </fieldset>
+</div>

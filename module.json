@@ -1,19 +1,31 @@
 {
   "title": "LipatoS - Сбор ресурсов",
   "description": "Система сбора, охоты и поиска ресурсов через таблицы бросков: ручное значение проверки, выдача предметов и валюты D&D5e, приватные сообщения о добыче и собственные иконки монет.",
-  "id": "lipatos-gatherer",
+  "id": "gatherer",
   "version": "5.0.1-manual-value-9-currency-stable-icons",
   "authors": [
-    {"name": "LipatoS"},
-    {"name": "theripper93 — оригинальный Gatherer", "url": "https://www.patreon.com/theripper93"}
+    {
+      "name": "LipatoS"
+    },
+    {
+      "name": "theripper93 — оригинальный Gatherer",
+      "email": "tsplab@gmail.com",
+      "url": "https://www.patreon.com/theripper93"
+    }
   ],
   "languages": [
-    {"lang": "en", "name": "English", "path": "languages/en.json"}
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
   ],
   "documentTypes": {
     "JournalEntryPage": {
       "gatherer": {
-        "htmlFields": ["text.content"]
+        "htmlFields": [
+          "text.content"
+        ]
       }
     }
   },
@@ -22,13 +34,20 @@
     "currency-patch.js",
     "manual-value-patch.js"
   ],
-  "styles": ["styles/module.css"],
+  "styles": [
+    "styles/module.css"
+  ],
   "packs": [],
   "url": "https://github.com/Lipatosha/LipatoS-gatherer",
   "manifest": "https://raw.githubusercontent.com/Lipatosha/LipatoS-gatherer/main/module.json",
   "download": "https://raw.githubusercontent.com/Lipatosha/LipatoS-gatherer/main/lipatos-gatherer-v5.0.1-manual-value-9-currency-stable-icons.zip",
   "socket": true,
-  "relationships": {"requires": []},
-  "compatibility": {"minimum": "14", "verified": "14"},
+  "relationships": {
+    "requires": []
+  },
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14"
+  },
   "protected": false
 }
