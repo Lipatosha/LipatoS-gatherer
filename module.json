@@ -2,7 +2,7 @@
   "title": "LipatoS - Сбор ресурсов",
   "description": "Система сбора, охоты и поиска ресурсов через таблицы бросков: ручное значение проверки, выдача предметов и валюты D&D5e, приватные сообщения о добыче и собственные иконки монет.",
   "id": "gatherer",
-  "version": "5.0.1-manual-value-9-currency-stable-icons",
+  "version": "5.0.2-manual-value-9-currency-stable-icons",
   "authors": [
     {
       "name": "LipatoS"
@@ -40,10 +40,20 @@
   "packs": [],
   "url": "https://github.com/Lipatosha/LipatoS-gatherer",
   "manifest": "https://raw.githubusercontent.com/Lipatosha/LipatoS-gatherer/main/module.json",
-  "download": "https://raw.githubusercontent.com/Lipatosha/LipatoS-gatherer/main/lipatos-gatherer-v5.0.1-manual-value-9-currency-stable-icons.zip",
+  "download": "https://raw.githubusercontent.com/Lipatosha/LipatoS-gatherer/main/lipatos-gatherer-v5.0.2-manual-value-9-currency-stable-icons.zip",
   "socket": true,
   "relationships": {
-    "requires": []
+    "requires": [],
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "6.0.0",
+          "verified": "6.0.5"
+        }
+      }
+    ]
   },
   "compatibility": {
     "minimum": "14",

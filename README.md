@@ -4,7 +4,7 @@
 
 ## Версия
 
-**5.0.1-manual-value-9-currency-stable-icons**
+**5.0.2-manual-value-9-currency-stable-icons**
 
 ## Возможности
 
