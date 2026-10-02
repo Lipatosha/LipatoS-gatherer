@@ -4,7 +4,7 @@
 
 ## Версия
 
-**5.0.2-manual-value-9-currency-stable-icons**
+**5.0.3-lipatos.1**
 
 ## Возможности
 
@@ -26,11 +26,17 @@
 
 Оригинальный Gatherer и эту сборку одновременно устанавливать не нужно — эта сборка заменяет его.
 
+## Внутренний ID
+
+Пакет LipatoS использует собственный ID `lipatos-gatherer`. Это сделано специально: оригинальный ID зарегистрирован в каталоге Foundry как защищённый пакет, из-за чего Foundry пыталась запрашивать авторизацию даже для нашей GitHub-сборки.
+
+Старые флаги и данные журналов сохранены в прежних пространствах имён для совместимости мира.
+
 ## Установка
 
 В Foundry VTT откройте **Add-on Modules → Install Module** и вставьте ссылку на манифест:
 
-`https://raw.githubusercontent.com/Lipatosha/LipatoS-gatherer/main/module.json`
+`https://github.com/Lipatosha/LipatoS-gatherer/releases/latest/download/module.json`
 
 ## Автор сборки
 
