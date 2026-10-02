@@ -1,0 +1,57 @@
+name: Build LipatoS Gatherer
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - module.json
+      - index.js
+      - currency-patch.js
+      - manual-value-patch.js
+      - languages/**
+      - styles/**
+      - README.md
+      - CHANGELOG.md
+      - .github/workflows/release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build isolated package
+        shell: bash
+        run: |
+          rm -rf build lipatos-gatherer.zip
+          unzip -q lipatos-gatherer-v5.0.2-manual-value-9-currency-stable-icons.zip -d build
+          cp module.json index.js currency-patch.js manual-value-patch.js build/
+          rm -rf build/styles build/languages
+          cp -R styles languages build/
+          find build -type f \( -name '*.js' -o -name '*.hbs' -o -name '*.json' -o -name '*.css' \) -print0 \
+            | xargs -0 sed -i 's#modules/gatherer/#modules/lipatos-gatherer/#g'
+          node --check build/index.js
+          node --check build/currency-patch.js
+          node --check build/manual-value-patch.js
+          node -e 'const m=require("./build/module.json"); if(m.id!=="lipatos-gatherer" || m.protected!==false || !m.download) process.exit(1)'
+          (cd build && zip -q -r ../lipatos-gatherer.zip .)
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          VERSION=$(node -p 'require("./module.json").version')
+          TAG="v$VERSION"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" lipatos-gatherer.zip module.json --clobber
+          else
+            gh release create "$TAG" lipatos-gatherer.zip module.json \
+              --target "$GITHUB_SHA" \
+              --title "LipatoS — Сбор ресурсов $TAG" \
+              --notes "Отдельный пакет LipatoS с уникальным внутренним ID lipatos-gatherer для исключения конфликта с защищённым пакетом Foundry."
+          fi
